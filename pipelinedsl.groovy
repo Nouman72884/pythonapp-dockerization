@@ -1,4 +1,4 @@
-pipelineJob("flask_app_demo") {
+pipelineJob("python_app_demo") {
   properties {
     pipelineTriggers {
       triggers {
