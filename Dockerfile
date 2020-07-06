@@ -1,4 +1,5 @@
 FROM ubuntu:18.04
+USER root
 ADD . /pythonapp
 WORKDIR /pythonapp
 RUN apt-get install python -y && \
