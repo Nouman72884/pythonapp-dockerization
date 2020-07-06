@@ -14,7 +14,7 @@ pipelineJob("python_app_demo") {
             url("https://github.com/Nouman72884/pythonapp-dockerization.git")
             credentials("github")
           }
-          branch('master')
+          branch('')
         }
       }
       scriptPath("jenkinsfile")
