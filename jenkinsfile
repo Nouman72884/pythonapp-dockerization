@@ -6,23 +6,14 @@ pipeline {
   }
   agent any
   parameters {
-        gitParameter name: 'REVISION',
-                     type: 'PT_REVISION',
-                     defaultValue: 'master'
-                     }
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+  }
   stages {
-  stage('Example') {
-          steps {
-              checkout([$class: 'GitSCM',
-                        branches: [[name: "${params.REVISION}"]],
-                        doGenerateSubmoduleConfigurations: false,
-                        extensions: [],
-                        gitTool: 'Default',
-                        submoduleCfg: [],
-                        userRemoteConfigs: [[url: 'https://github.com/Nouman72884/pythonapp-dockerization.git']]
-                      ])
-          }
+    stage('Cloning Git') {
+      steps {
+        git branch: "${params.BRANCH}", url: 'https://github.com/Nouman72884/pythonapp-dockerization.git'
       }
+    }
     stage('Building image') {
       steps{
         script {
