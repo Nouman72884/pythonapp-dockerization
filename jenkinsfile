@@ -9,6 +9,7 @@ pipeline {
         gitParameter name: 'REVISION',
                      type: 'PT_REVISION',
                      defaultValue: 'master'
+                     }
   stages {
   stage('Example') {
           steps {
