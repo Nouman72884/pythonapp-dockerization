@@ -1,9 +1,10 @@
 pipeline {
-  environment {
-    registry = "nouman72884/pythonapp"
-    registryCredential = 'dockerhub'
-    dockerImage = ''
-  }
+def commit_id
+ stage('Preparation') {
+   checkout scm
+   sh "git rev-parse --short HEAD > .git/commit-id"
+   commit_id = readFile('.git/commit-id').trim()
+ }
   agent any
   stages {
     stage('Cloning Git') {
@@ -11,26 +12,10 @@ pipeline {
         git 'https://github.com/Nouman72884/pythonapp-dockerization.git'
       }
     }
-    stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
-    }
-    stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
-      }
-    }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
-      }
-    }
+    stage('docker build/push') {
+     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+       def app = docker.build("nouman72884/pythonapp:${commit_id}", '.').push()
+     }
+   }
   }
 }
