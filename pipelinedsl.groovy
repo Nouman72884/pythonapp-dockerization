@@ -12,7 +12,7 @@ pipelineJob("python_app_demo") {
         git {
           remote {
             url("https://github.com/Nouman72884/pythonapp-dockerization.git")
-            credentials("github_credentials")
+            credentials("github")
           }
           branch('master')
         }
