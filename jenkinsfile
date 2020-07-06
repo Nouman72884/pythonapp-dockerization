@@ -5,10 +5,13 @@ pipeline {
     dockerImage = ''
   }
   agent any
+  parameters {
+    gitParameter branchFilter: 'origin/(.\*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+  }
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/Nouman72884/pythonapp-dockerization.git'
+        git branch: "${params.BRANCH}", url: 'https://github.com/Nouman72884/pythonapp-dockerization.git'
       }
     }
     stage('Building image') {
