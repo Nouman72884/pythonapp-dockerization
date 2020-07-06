@@ -30,7 +30,8 @@ pipeline {
     stage('Run Image') {
       steps{
          script {
-            
+            sh "docker stop pythonapp"
+            sh "docker rm pythonapp"
             sh "docker run --name pythonapp -p 5000:5000 -d 020046395185.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest"
           }
         }
