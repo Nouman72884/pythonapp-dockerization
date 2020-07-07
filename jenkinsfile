@@ -5,9 +5,25 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  triggers {
-        issueCommentTrigger('.*test this please.*')
+  scm {
+        git {
+            remote {
+                github('Nouman72884/pythonapp-dockerization')
+                refspec('+refs/pull/*:refs/remotes/origin/pr/*')
+            }
+            branch('${sha1}')
+        }
     }
+    triggers {
+          githubPullRequest {
+              useGitHubHooks()
+              permitAll()
+              autoCloseFailedPullRequests()
+              displayBuildErrorsOnDownstreamBuilds()
+              whiteListTargetBranches(['master','feature'])
+              blackListTargetBranches([''])
+              }
+          }
   stages {
     stage('Cloning Git') {
       steps {
