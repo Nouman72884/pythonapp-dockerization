@@ -38,7 +38,7 @@ pipeline {
                               [sshPublisherDesc
                               (configName: 'webserver',
                                transfers: [sshTransfer(
-                               excludes: 'jenkinsfile,pipeline.groovy,app.py',
+                               excludes: '',
                                execCommand: 'cd /tmp/tmp;sudo chmod a+x script.sh;./script.sh',
                                execTimeout: 20000,
                                flatten: false,
