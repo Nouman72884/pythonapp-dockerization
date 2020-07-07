@@ -6,7 +6,7 @@ pipeline {
   }
   agent any
   parameters {
-    gitParameter branchFilter: 'origin/(.*)', defaultValue: '', name: 'BRANCH', type: 'PT_BRANCH'
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
   }
   stages {
     stage('Cloning Git') {
@@ -38,7 +38,7 @@ pipeline {
                               (configName: 'webserver',
                                transfers: [sshTransfer(
                                excludes: 'jenkinsfile,pipeline.groovy,app.py',
-                               execCommand: 'docker stop pythonapp;docker rm pythonapp;docker run --name pythonapp -p 5000:5000 -d 020046395185.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest',
+                               execCommand: 'docker stop pythonapp;docker rm pythonapp;aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 020046395185.dkr.ecr.us-east-1.amazonaws.com;docker run --name pythonapp -p 5000:5000 -d 020046395185.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest',
                                execTimeout: 20000,
                                flatten: false,
                                makeEmptyDirs: true,
