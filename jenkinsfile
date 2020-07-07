@@ -5,11 +5,7 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  triggers {
-        issueCommentTrigger('.*test this please.*')
-    }
-
-  stages {
+    stages {
     stage('Cloning Git') {
       steps {
         git  'https://github.com/Nouman72884/pythonapp-dockerization.git'
