@@ -5,13 +5,11 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  parameters {
-    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-  }
+  C:\Users\nouman\Desktop\python-aap-dockerrize\jenkinsfile
   stages {
     stage('Cloning Git') {
       steps {
-        git branch: "${params.BRANCH}", url: 'https://github.com/Nouman72884/pythonapp-dockerization.git'
+        git  'https://github.com/Nouman72884/pythonapp-dockerization.git'
       }
     }
     stage('Building image') {
