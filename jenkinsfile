@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git branch: "${params.BRANCH}", url: 'https://github.com/Nouman72884/pythonapp-dockerization.git'
+        git  'https://github.com/Nouman72884/pythonapp-dockerization.git'
       }
     }
     stage('Building image') {
