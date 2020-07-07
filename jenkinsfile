@@ -5,9 +5,9 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  parameters {
-    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-  }
+  triggers {
+        issueCommentTrigger('.*test this please.*')
+    }
   stages {
     stage('Cloning Git') {
       steps {
