@@ -5,7 +5,9 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  C:\Users\nouman\Desktop\python-aap-dockerrize\jenkinsfile
+  triggers {
+    issueCommentTrigger('.*retest this please.*')
+  }
   stages {
     stage('Cloning Git') {
       steps {
