@@ -38,13 +38,13 @@ pipeline {
                                execCommand: 'cd /tmp/tmp;sudo chmod a+x script.sh;./script.sh',
                                execTimeout: 20000,
                                flatten: false,
-                               makeEmptyDirs: true,
+                               makeEmptyDirs: false,
                                noDefaultExcludes: false,
                                patternSeparator: '[, ]+',
                                remoteDirectory: '/tmp',
                                remoteDirectorySDF: false,
                                removePrefix: '', sourceFiles: '**/*')],
-                               usePromotionTimestamp: false,
+                               usePromotionTimestamp: true,
                                useWorkspaceInPromotion: false,
                                verbose: true)])
                               }
