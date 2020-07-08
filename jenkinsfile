@@ -34,11 +34,11 @@ pipeline {
                               [sshPublisherDesc
                               (configName: 'webserver',
                                transfers: [sshTransfer(
-                               excludes: '',
+                               excludes: 'pipelinedsl.groovy',
                                execCommand: 'cd /tmp/tmp;sudo chmod a+x script.sh;./script.sh',
                                execTimeout: 20000,
                                flatten: false,
-                               makeEmptyDirs: false,
+                               makeEmptyDirs: true,
                                noDefaultExcludes: false,
                                patternSeparator: '[, ]+',
                                remoteDirectory: '/tmp',
