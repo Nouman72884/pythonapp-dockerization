@@ -36,7 +36,7 @@ pipeline {
                                transfers: [sshTransfer(
                                excludes: '',
                                execCommand: 'cd /tmp/tmp;sudo chmod a+x script.sh;./script.sh',
-                               execTimeout: 20000,
+                               execTimeout: 30000,
                                flatten: false,
                                makeEmptyDirs: true,
                                noDefaultExcludes: false,
