@@ -7,6 +7,10 @@ multibranchPipelineJob('demo') {
             includes('master app-changes')
         }
     }
+    triggers {
+        periodic(int 1)
+
+}
     orphanedItemStrategy {
         discardOldItems {
             numToKeep(20)
