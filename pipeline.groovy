@@ -8,7 +8,7 @@ multibranchPipelineJob('demo') {
         }
     }
     triggers {
-        periodic(1 mins)
+        periodic(1)
 
 }
     orphanedItemStrategy {
