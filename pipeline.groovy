@@ -9,12 +9,12 @@ multibranchPipelineJob('demo') {
         }
     }
     triggers {
-        periodic(1)
+        periodic(2)
 
 }
     orphanedItemStrategy {
         discardOldItems {
-            numToKeep(20)
+            numToKeep(30)
         }
     }
 }
