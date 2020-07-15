@@ -5,7 +5,7 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  stages {
+    stages {
     stage('Cloning Git') {
       steps {
         git  'https://github.com/Nouman72884/pythonapp-dockerization.git'
